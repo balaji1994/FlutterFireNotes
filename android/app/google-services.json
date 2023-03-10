@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "262535965607",
+    "project_id": "lolfirenotes",
+    "storage_bucket": "lolfirenotes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262535965607:android:14f5f51c8314c6e02e2482",
+        "android_client_info": {
+          "package_name": "com.lolsite.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262535965607-hc54d7ql9r7v5hhuhv9q4orjl5cp9rgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEorqdcBKZa6Tm6HZmn5bCIssUY-jRhUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262535965607-hc54d7ql9r7v5hhuhv9q4orjl5cp9rgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
