@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mynotes/views/register_view.dart';
 
 import '../firebase_options.dart';
 
@@ -33,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(title: const Text("Login")),
       body: FutureBuilder(
         future: Firebase.initializeApp(
                 options: DefaultFirebaseOptions.currentPlatform,
@@ -70,7 +71,7 @@ class _LoginViewState extends State<LoginView> {
                             email: email,
                             password: password
                           );
-                      print(userCredential);
+                        Navigator.of(context).pushNamedAndRemoveUntil("/notesapp/", (route) => false);
                       } on FirebaseAuthException catch(e){
                         if(e.code == "user-not-found"){
                           print("User name is incorrect!");
@@ -82,6 +83,11 @@ class _LoginViewState extends State<LoginView> {
                         
                       }
                     }, child: const Text("Login")),
+                    TextButton(onPressed: () {
+                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const RegisterView()));
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        "/register/", (route) => false);
+                    }, child: const Text("Not an user yet? Register here"))
                   ],
                 );
             default: 
