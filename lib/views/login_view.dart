@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mynotes/constants/router.dart';
 import 'package:mynotes/views/register_view.dart';
 
 import '../firebase_options.dart';
@@ -71,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
                             email: email,
                             password: password
                           );
-                        Navigator.of(context).pushNamedAndRemoveUntil("/notesapp/", (route) => false);
+                        Navigator.of(context).pushNamedAndRemoveUntil(notesRoute, (route) => false);
                       } on FirebaseAuthException catch(e){
                         if(e.code == "user-not-found"){
                           print("User name is incorrect!");
@@ -86,7 +87,7 @@ class _LoginViewState extends State<LoginView> {
                     TextButton(onPressed: () {
                       // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const RegisterView()));
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                        "/register/", (route) => false);
+                        registerRoute, (route) => false);
                     }, child: const Text("Not an user yet? Register here"))
                   ],
                 );
