@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/router.dart';
-
+import 'dart:developer' as devtools;
 import '../firebase_options.dart';
 
 class RegisterView extends StatefulWidget {
@@ -71,18 +71,20 @@ class _RegisterViewState extends State<RegisterView> {
                             email: email,
                             password: password
                           );
+
+                        devtools.log(userCredential.toString());
                       } on FirebaseAuthException catch(e){
                         if (e.code == "weak-password"){
-                          print("Weak password");
+                          devtools.log("Weak password");
                         }
                         else if (e.code == "email-already-in-use"){
-                          print("Email you provided already exists");
+                          devtools.log("Email you provided already exists");
                         }
                         else if (e.code == "invalid-email"){
-                          print("Provide valid email");
+                          devtools.log("Provide valid email");
                         }
                         else{
-                          print(e);
+                          devtools.log(e.toString());
                         }
                       }
                     }, child: const Text("Register")),

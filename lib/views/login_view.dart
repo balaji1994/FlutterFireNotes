@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/router.dart';
 import 'package:mynotes/views/register_view.dart';
-
+import "dart:developer" as devtools;
 import '../firebase_options.dart';
 
 class LoginView extends StatefulWidget {
@@ -75,12 +75,12 @@ class _LoginViewState extends State<LoginView> {
                         Navigator.of(context).pushNamedAndRemoveUntil(notesRoute, (route) => false);
                       } on FirebaseAuthException catch(e){
                         if(e.code == "user-not-found"){
-                          print("User name is incorrect!");
+                          await showErrorDialog(context, "User name is incorrect");
                         }
                         else if (e.code == "wrong-password"){
-                          print("Wrong Password");
+                          await showErrorDialog(context, "Wrong Password");
                         }
-                        print(e);
+                        devtools.log(e.toString());
                         
                       }
                     }, child: const Text("Login")),
@@ -98,4 +98,18 @@ class _LoginViewState extends State<LoginView> {
       )
     );
   }
+}
+
+Future<void> showErrorDialog(BuildContext context, String text){
+  return showDialog(context: context, builder: (context) {
+    return AlertDialog(
+    title: const Text("Oops!"),
+    content: Text(text),
+    actions: [
+      TextButton(onPressed: () {
+        Navigator.of(context).pop();
+      }, child: const Text("Ok"))
+    ],
+  );
+  });
 }

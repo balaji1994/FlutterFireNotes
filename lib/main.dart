@@ -45,9 +45,9 @@ class _HomePageViewState extends State<HomePageView> {
             case ConnectionState.done:
               final user = FirebaseAuth.instance.currentUser;
               // final verificationMailSent = true;
-              if (user != Null)
+              if (user != null)
               {
-                if (user!.emailVerified){
+                if (user.emailVerified){
                   return const NotesView();
                   // return const LoginView();
                 }else{
